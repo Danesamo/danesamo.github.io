@@ -1,0 +1,66 @@
+---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { profile, cases, proof } from "../data/site";
+
+const featured = cases.filter((c) => c.featured);
+const fmt = (v: number, d: number) => v.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+---
+
+<Base>
+  <!-- Intro -->
+  <section class="bg-navy py-20 text-ivory sm:py-28">
+    <div class="container-site">
+      <p class="eyebrow text-gold">{profile.role}</p>
+      <h1 class="max-w-[16ch] text-[2.8rem] font-bold text-ivory sm:text-[4rem]">{profile.name}</h1>
+      <p class="mt-5 max-w-[48ch] text-[1.15rem] text-muted-light sm:text-[1.3rem]">{profile.tagline}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="/projects/" class="btn btn-accent w-full sm:w-auto">View projects</a>
+        <a href="/contact/" class="btn btn-outline-light w-full sm:w-auto">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Short about, first after the intro -->
+  <section class="border-b border-line py-20 sm:py-24">
+    <div class="container-site grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" data-reveal>
+      <div>
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">One question guides my work</h2>
+      </div>
+      <div class="grid justify-items-start gap-5 text-muted">
+        <p class="text-[1.08rem] text-ink">Does this system understand the people it serves?</p>
+        <p>Many African languages and realities are still missing from the data. I build data and AI systems with that gap in mind, for organizations in Africa and beyond.</p>
+        <a href="/about/" class="text-link">More about me <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="border-b border-line bg-ivory-2" aria-label="Selected results">
+    <div class="container-site grid grid-cols-2 gap-y-8 py-10 lg:grid-cols-4">
+      {proof.map((p) => (
+        <div class="pr-4" data-reveal>
+          <p class="font-display text-[1.8rem] font-semibold text-terracotta-deep sm:text-[2.1rem]">{p.prefix}{fmt(p.value, p.decimals)}{p.suffix}</p>
+          <p class="mt-1 text-[0.9rem] leading-snug text-muted">{p.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Featured projects -->
+  <section class="py-20 sm:py-24">
+    <div class="container-site">
+      <div class="mb-10 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <p class="eyebrow">Selected projects</p>
+          <h2 class="section-title">Systems built for production</h2>
+        </div>
+        <a href="/projects/" class="text-link">All projects <span aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {featured.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </section>
+</Base>

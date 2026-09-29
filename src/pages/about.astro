@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile, about, steps } from "../data/site";
+---
+
+<Base title="About" description="About Daniela Samo, Data & AI Engineer: approach, values and community.">
+  <section class="border-b border-line bg-ivory-2 py-14 sm:py-16">
+    <div class="container-site">
+      <p class="eyebrow">About</p>
+      <h1 class="page-title">Data and AI that understand the people they serve</h1>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16">
+    <div class="container-text grid gap-5 text-[1.08rem]" data-reveal>
+      {about.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <section class="border-t border-line py-14 sm:py-16">
+    <div class="container-site">
+      <p class="eyebrow">Approach</p>
+      <h2 class="section-title mb-10">How a system comes together</h2>
+      <ol class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s, i) => (
+          <li class="rounded-2xl border border-line bg-paper p-6" data-reveal>
+            <p class="font-mono text-[0.85rem] text-terracotta-deep">{String(i + 1).padStart(2, "0")}</p>
+            <h3 class="mt-3 text-[1.2rem] font-semibold">{s.title}</h3>
+            <p class="mt-2 text-muted">{s.text}</p>
+            <p class="mt-4 font-mono text-[0.78rem] text-gold-deep">{s.tools}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-ivory-2 py-14 sm:py-16">
+    <div class="container-site grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16" data-reveal>
+      <div>
+        <p class="eyebrow">Beyond code</p>
+        <h2 class="section-title">Sharing what I learn</h2>
+      </div>
+      <div class="grid justify-items-start gap-5 text-muted">
+        <p>I write on LinkedIn about data engineering, language models and African-language NLP, for a community of more than 1,600 practitioners and students, and I take part in AI events such as Deep Learning IndabaX.</p>
+        <a href={`${profile.linkedin}/recent-activity/all/`} target="_blank" rel="noopener" class="text-link">Read my posts <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</Base>

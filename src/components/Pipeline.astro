@@ -1,0 +1,17 @@
+---
+// Static architecture strip: the stages of a project, left to right.
+interface Props { stages: string[]; dark?: boolean }
+const { stages, dark = false } = Astro.props;
+---
+
+<div class="relative" aria-label={`Pipeline: ${stages.join(", then ")}`}>
+  <div class={`absolute left-[5px] right-[5px] top-[5px] h-px ${dark ? "bg-line-dark-2" : "bg-line"}`}></div>
+  <ol class="relative flex justify-between gap-2">
+    {stages.map((s, i) => (
+      <li class={`flex flex-col gap-2 ${i === 0 ? "items-start" : i === stages.length - 1 ? "items-end text-right" : "items-center text-center"}`}>
+        <span class={`h-[11px] w-[11px] rounded-full border-[1.5px] ${i === stages.length - 1 ? "border-terracotta bg-terracotta" : dark ? "border-line-dark-2 bg-navy" : "border-[#C9B99C] bg-paper"}`}></span>
+        <span class={`font-mono text-[0.72rem] leading-tight ${dark ? "text-muted-light" : "text-muted"}`}>{s}</span>
+      </li>
+    ))}
+  </ol>
+</div>

@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+/* Brand tokens, shared with the LinkedIn banner */
+@theme {
+  --color-navy: #0E1726;
+  --color-navy-2: #14213D;
+  --color-line-dark: #22344E;
+  --color-line-dark-2: #3A5274;
+  --color-ivory: #F6F1E8;
+  --color-ivory-2: #EFE7D8;
+  --color-paper: #FFFDF9;
+  --color-ink: #1B2233;
+  --color-muted: #56607A;
+  --color-muted-light: #B7C3D3;
+  --color-line: #DDD2BF;
+  --color-terracotta: #E07A4F;
+  --color-terracotta-deep: #A6492A;
+  --color-gold: #D4A24C;
+  --color-gold-deep: #8A5A1F;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  body { @apply bg-ivory text-ink font-sans antialiased; font-size: 1.0625rem; line-height: 1.65; }
+  h1, h2, h3 { @apply font-display text-navy-2; letter-spacing: -0.015em; line-height: 1.15; }
+  a { text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--color-gold); outline-offset: 3px; border-radius: 4px; }
+}
+
+@layer components {
+  .container-site { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+  .container-text { width: min(760px, 100% - 2.5rem); margin-inline: auto; }
+
+  .eyebrow { @apply mb-3 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-gold-deep; }
+
+  .page-title { @apply text-[2.2rem] font-semibold sm:text-[2.8rem]; }
+  .section-title { @apply text-[1.6rem] font-semibold sm:text-[1.9rem]; }
+
+  .btn {
+    @apply inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full border-[1.5px] border-transparent px-5 py-2.5 text-[0.98rem] font-semibold no-underline transition-colors duration-200;
+  }
+  .btn-accent { @apply bg-terracotta text-navy hover:bg-[#EC8D63]; }
+  .btn-outline-light { @apply border-line-dark-2 text-ivory hover:border-ivory; }
+  .btn-outline { @apply border-navy-2 text-navy-2 hover:bg-navy-2 hover:text-ivory; }
+
+  .tag { @apply rounded-md bg-terracotta/12 px-2.5 py-1 font-mono text-[0.74rem] uppercase tracking-[0.06em] text-terracotta-deep; }
+  .chip { @apply rounded-md border border-line px-2.5 py-1 font-mono text-[0.78rem] text-muted; }
+  .text-link { @apply font-semibold text-terracotta-deep no-underline hover:text-navy-2 hover:underline; }
+}
+
+/* A single, discreet fade-in. Content stays visible without JavaScript or when motion is reduced. */
+.js [data-reveal] { opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js [data-reveal].is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] { opacity: 1; transform: none; transition: none; }
+}

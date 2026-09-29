@@ -1,0 +1,22 @@
+---
+import type { Case } from "../data/site";
+import Pipeline from "./Pipeline.astro";
+
+interface Props { project: Case }
+const { project: p } = Astro.props;
+---
+
+<article class="group relative flex h-full flex-col gap-4 rounded-2xl border border-line bg-paper p-6 transition-colors duration-200 hover:border-[#C9B99C] sm:p-7" data-reveal>
+  <div class="flex flex-wrap items-center justify-between gap-3">
+    <span class="tag">{p.tag}</span>
+    <span class="text-[0.84rem] text-muted">{p.origin}</span>
+  </div>
+  <h3 class="text-[1.25rem] font-semibold">
+    <a href={`/projects/${p.slug}/`} class="text-navy-2 no-underline after:absolute after:inset-0 group-hover:text-terracotta-deep">{p.title}</a>
+  </h3>
+  <p class="text-muted">{p.summary}</p>
+  <div class="mt-auto pt-2">
+    <Pipeline stages={p.pipeline} />
+  </div>
+  <p class="text-[0.95rem] font-semibold text-terracotta-deep">Read the case <span aria-hidden="true">&rarr;</span></p>
+</article>

@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import { profile } from "../data/site";
+
+const channels = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "LinkedIn", value: "linkedin.com/in/daniela-samo", href: profile.linkedin },
+  { label: "GitHub", value: "github.com/Danesamo", href: profile.github },
+];
+---
+
+<Base title="Contact" description="Contact Daniela Samo, Data & AI Engineer.">
+  <section class="bg-navy py-20 text-ivory sm:py-28">
+    <div class="container-text">
+      <p class="eyebrow text-gold">Contact</p>
+      <h1 class="text-[2.2rem] font-semibold text-ivory sm:text-[3rem]">Building data or AI capabilities? Let's talk.</h1>
+      <p class="mt-5 text-[1.1rem] text-muted-light">Open to roles and collaborations with banks, public institutions and international organizations, in Africa and beyond. Remote, hybrid or on site.</p>
+      <a href={`mailto:${profile.email}`} class="btn btn-accent mt-9 w-full sm:w-auto">Send an email</a>
+    </div>
+  </section>
+
+  <section class="py-14 sm:py-16">
+    <div class="container-text">
+      <ul class="grid gap-4">
+        {channels.map((c) => (
+          <li data-reveal>
+            <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel={c.href.startsWith("http") ? "noopener" : undefined} class="group flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-line bg-paper p-6 no-underline hover:border-[#C9B99C]">
+              <span class="font-mono text-[0.82rem] uppercase tracking-[0.12em] text-gold-deep">{c.label}</span>
+              <span class="font-semibold text-navy-2 group-hover:text-terracotta-deep">{c.value}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

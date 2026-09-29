@@ -1,0 +1,58 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { profile } from "../data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle = title ? `${title} | ${profile.name}` : `${profile.name} | ${profile.role}`;
+const metaDescription =
+  description ??
+  "Daniela Samo, Data & AI Engineer. Real-time data platforms, LLM systems in production, and models evaluated on the people they serve.";
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="author" content={profile.name} />
+    <meta name="theme-color" content="#0E1726" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <ClientRouter />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a href="#content" class="absolute -top-12 left-4 z-[100] rounded-lg bg-gold px-4 py-2 font-semibold text-navy focus:top-4">Skip to content</a>
+    <Header />
+    <main id="content" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      import "../scripts/site.ts";
+    </script>
+  </body>
+</html>
