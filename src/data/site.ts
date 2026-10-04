@@ -129,8 +129,8 @@ export const cases: Case[] = [
 ];
 
 export const also = [
-  { title: "Observability stack.", text: "Prometheus, Grafana, cAdvisor and exporters, with four production dashboards, non-root containers and health checks." },
-  { title: "Geolocation service.", text: "247 countries across four administrative levels in ClickHouse, latency cut from 500 ms to under 1 ms, about $1,736 saved per year." },
+  { title: "Access control and traceable delivery.", text: "Directory-based authentication with automatic group-to-role mapping, and dashboards delivered through continuous integration so every change stays traceable and reversible." },
+  { title: "Geolocation service.", text: "247 countries across four administrative levels in ClickHouse, latency cut from 500 ms to under 1 ms, a 500-fold gain with no change to application code." },
   { title: "Data modeling with dbt.", text: "Staging and marts layers with automated tests.", link: { href: "https://github.com/Danesamo/dbt-fundamentals", label: "Repository" } },
   { title: "Fraud detection.", text: "A hybrid machine learning and deep learning approach on imbalanced data.", link: { href: "https://github.com/Danesamo/Fraud_project", label: "Repository" } },
 ];
@@ -144,7 +144,7 @@ export const steps = [
 ];
 
 export const experience = [
-  { time: "2025 to today", title: "Data Engineer", where: "SMATFLOW NGO, remote", text: "Real-time data capture, analytical pipelines, distributed NLP and observability.", stack: ["Kafka", "ClickHouse", "Airflow", "PySpark"] },
+  { time: "2025 to 2026", title: "Data Engineer", where: "SMATFLOW NGO, remote", text: "Real-time data capture, analytical pipelines, distributed NLP and access governance.", stack: ["Kafka", "ClickHouse", "Airflow", "PySpark"] },
   { time: "2024 to 2025", title: "Machine Learning Engineer, internship", where: "SMATFLOW NGO, remote", text: "LLM classification of citizen texts, legal retrieval and model evaluation.", stack: ["LLMs", "RAG", "FastAPI", "ChromaDB"] },
   { time: "2023 to 2024", title: "IoT Research Intern", where: "AIRC-ITI Laboratory, Hanoi", text: "Behavioral data from connected devices for personalised learning. Co-author of a published paper.", stack: ["IoT", "Data analysis", "Research"] },
 ];
